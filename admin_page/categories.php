@@ -1,9 +1,19 @@
 <?php
+
+include('../includes/connect.php');
 if(isset($_POST['add_cat'])){
-     $cat_name = $_POST['cat_name'];
+    $cat_name = $_POST['cat_name'];
 
 
-     $query = "insert into `categories`(cat_name) values($cat_name)";
+    $existance ="select * from `categories` where cat_name='$cat_name'";
+    $result_re = mysqli_query($con,$existance);
+    $number = mysqli_num_rows($result_re);
+    if ($number>0){
+        echo"<script>alert('This category already exist')</script>";
+    }
+    else{
+      
+     $query = "insert into `categories`(cat_name) values('$cat_name')";
 
      $result = mysqli_query($con,$query);
 
@@ -11,6 +21,9 @@ if(isset($_POST['add_cat'])){
       
       echo"<script>alert('category added successfully')</script>";
     }
+    }
+
+
 }
 
 
