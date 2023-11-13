@@ -74,7 +74,7 @@ div.content {
   <a href="index.php?insert_category">Add categories</a>
   <a href="index.php?insert_product">Add product</a>
   <a href="#about">View customers</a>
-  <a href="#contact">View product</a>
+  <a href="index.php?view_product">View product</a>
   
 </div>
 
@@ -91,6 +91,9 @@ if(isset($_GET['insert_category'])){
 }
 if(isset($_GET['insert_product'])){
   include('add_product.php');
+}
+if(isset($_GET['view_product'])){
+  include('view_product.php');
 }
 
 ?>
