@@ -18,7 +18,7 @@ if(isset($_POST['register'])){
     else{
 
     
-    $query = "INSERT INTO `customers`(c_name,c_email,c_password) VALUES ('$c_name','$c_email',' $c_password')";
+    $query = "INSERT INTO `customers`(c_name,c_email,c_password) VALUES ('$c_name','$c_email','$c_password')";
     $result = mysqli_query($con,$query);
 
     if($result){

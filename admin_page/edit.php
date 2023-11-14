@@ -15,37 +15,53 @@ include('../includes/connect.php');
 
     <?php
 
-    $product_id = $_GET['product_id'];
+$product_id = $_GET['product_id'];
 
-    $values  ="select * from products where p_id=$product_id";
-    $value_res = mysqli_query($con,$values);
+$values  ="select * from products where p_id=$product_id";
+$value_res = mysqli_query($con,$values);
 
-    $data = mysqli_fetch_array($value_res);
+$data = mysqli_fetch_array($value_res);
 
-    
-        if(isset($_GET['edit_product'])){
+if (isset($_POST['edit_product'])) {
+  
 
-            $p_name = $_POST['p_name'];
-            $p_price = $_POST['p_price'];
-            $p_des = $_POST['p_des'];
-            $p_cat = $_POST['p_cat'];
-            $p_status ='true';
-        
-        
-        
-            $p_image = $_FILES['p_image']['name'];
-        
-            $temp_image = $_FILES['p_image']['tmp_name'];
-        
-            move_uploaded_file($temp_image,"./product_images/$p_image");
+    $p_name = $_POST['p_name'];
+    $p_price = $_POST['p_price'];
+    $p_des = $_POST['p_des'];
+    $p_cat = $_POST['p_cat'];
+    $p_status = 'true';
 
+    $p_image = $_FILES['p_image']['name'];
+    $temp_image = $_FILES['p_image']['tmp_name'];
 
-            $query = "update `products` set p_name='$p_name',p_price='$p_price',p_des='$p_des',p_image='$p_image',p_status='$p_name',cat_id='$p_cat' where p_id= $product_id";
-            $result = mysqli_query($con,$query);
+    // Check if a new image is uploaded
+    if (!empty($p_image)) {
+        // Remove the old image
+        $old_image = $data['p_image'];
+        unlink("./product_images/$old_image");
 
-        }
+        // Move the new image to the product_images folder
+        move_uploaded_file($temp_image, "./product_images/$p_image");
+    } else {
+        // If no new image is uploaded, use the existing image name
+        $p_image = $data['p_image'];
+    }
+
+    // Update the product information in the database
+    $query = "UPDATE `products` SET p_name='$p_name', p_price='$p_price', p_des='$p_des', p_image='$p_image', status='$p_status', cat_id='$p_cat' WHERE p_id=$product_id";
+    $result = mysqli_query($con, $query);
+
+    if ($result) {
+      echo "<script>alert('Edited successfully');</script>";
+      echo "<script>window.location.href = 'index.php?view_product';</script>";
+       
+    } else {
+        echo "<script>alert('Error editing product');</script>";
+    }
+}
 
     ?>
+    <div class="container" style="margin: 50px;">
 <form method="POST" enctype="multipart/form-data">
 
 <div class="mb-3">
@@ -95,6 +111,8 @@ include('../includes/connect.php');
 </div>
 
 </form>
+
+</div>
 
 
 

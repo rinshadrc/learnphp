@@ -8,47 +8,35 @@ if(isset($_POST['login'])){
     $c_email = $_POST['c_email'];
     $c_password = $_POST['c_password'];
 
-    echo "Email: $c_email<br>";
-    echo "Password: $c_password<br>";
-    // $query = "SELECT * FROM `customers` WHERE c_email='$c_email' AND c_password ='$c_password'";
-    $query = "SELECT * FROM `customers` WHERE c_email='$c_email'";
+    $query = "SELECT * FROM `customers` WHERE c_email='$c_email' AND c_password ='$c_password' ";
+    echo $query;
 
     $results = mysqli_query($con,$query);
+    print_r($results);
     if ($results) {
         if (mysqli_num_rows($results) > 0) {
-            // Fetch data...
-            while ($row = mysqli_fetch_assoc($results)) {
-                $email = $row['c_email'];
-                $password = $row['c_password'];
-    
-                echo "<h1>$email</h1><br><h2>$password</h2>";
-            }
-        } else {
-            echo "No matching records found.";
-        }
-    } else {
-        echo "MySQL Error: " . mysqli_error($con);
-    }
+     
 
 
 
-    // if(mysqli_num_rows($results)){
-
-    //     $_SESSION['user'] = $c_email;
+        $_SESSION['user'] =$c_email ;
    
-    //     echo"<script>
-    //     alert('login successfully');
+        echo"<script>
+        alert('login successfully');
+        window.location.href='index.php';
        
-    //     </script>";
+        </script>";
         
-    //   }
-    //   else{
+      }
+      else{
 
-    //     echo"<script>alert('password or email is incorrect')</script>";
+        echo"<script>alert('password or email is incorrect')</script>";
 
-    //   }
+      }
 
 }
+}
+
 ?>
 
 <div class="container">
