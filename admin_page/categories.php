@@ -29,8 +29,6 @@ if(isset($_POST['add_cat'])){
 
 ?>
 
-
-
 <form action="" method="POST">
 
 

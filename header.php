@@ -46,20 +46,22 @@
             <a class="nav-link text-white" href="login.php">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="#">Cart</a>
+            <a class="nav-link text-white" href="cart.php">Cart</a>
           </li> 
-          <li class="nav-item">
-            <a class="nav-link text-white" href="logout.php">logout</a>
-          </li> 
-          <li class="nav-item text-white ms-5">
-
-          <?php
+          <li class="nav-item ms-5">
+            <a class="nav-link text-danger" href="logout.php">logout- <?php
               session_start();
               if (isset($_SESSION['user'])) {
                   $name = $_SESSION['user'];
                   echo "<span class='text-white'>($name)</span>";
               }
               ?>
+
+            </a>
+          </li> 
+          <li class="nav-item text-white ms-5" >
+
+         
 
           </li>
 

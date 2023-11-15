@@ -22,7 +22,7 @@ function getproduct(){
             <p class='card-text text-danger'>{$row['p_price']}</p>
 
             <p class='card-text fst-italic'>{$row['p_des']}</p>
-            <a href='#' class='btn btn-success'>Add to cart</a>
+            <a href='add_to_cart.php?product_id={$row['p_id']}' class='btn btn-success'>Add to cart</a>
             </div>
         </div>
       </div>";

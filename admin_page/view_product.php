@@ -23,7 +23,7 @@ include('../includes/connect.php');
   <tbody>
 
   <?php
-   $query = "SELECT * FROM products p INNER JOIN categories c ON p.cat_id = c.cat_id";
+    $query = "SELECT * FROM products p INNER JOIN categories c ON p.cat_id = c.cat_id";
     $result = mysqli_query($con,$query);
     $count=1;
     while($row = mysqli_fetch_assoc($result)){
@@ -36,15 +36,18 @@ include('../includes/connect.php');
       <td>{$row['p_des']}</td>
       <td>{$row['cat_name']}</td>
       <td><a href='edit.php?product_id={$row['p_id']}'><button type='submit' class='btn btn-primary'>Edit</button></a>
-      <button type='submit' class='btn btn-danger'>Delete</button></td>
-      
-    </tr>";
+      <a href='delete.php?product_id={$row['p_id']}'><button type='submit' class='btn btn-danger'>Delete</button></a></td>
 
-    $count++;
+      
+      </tr>";
+
+      $count++;
     } 
   
   
   ?>
+
+
   
    
   </tbody>
