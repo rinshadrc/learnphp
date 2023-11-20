@@ -1,22 +1,15 @@
 <?php
 session_start();
 include('includes/connect.php');
+include('authenticate.php');
+
 
 if(isset($_GET['product_id']) && isset($_SESSION['user'])){
 
     $product_id = $_GET['product_id'];
-    $user_email = $_SESSION['user'];
+    $user_email = $_SESSION['user']['email'];
 
-    // $query = "insert into `cart`(p_id,c_email,qty) values($product_id,'$user_email',1) ";
-    // $result = mysqli_query($con,$query);
-    // if($result){
-    //     echo"<script>alert(added successfully)</script>";
-    // }else{
-    //     echo"<script>alert(added not successfully)</script>";
-
-    // }
-
-
+  
       // Check if the product is already in the cart for the specific user
       $checkQuery = "SELECT * FROM cart WHERE p_id = $product_id AND c_email = '$user_email'";
       $checkResult = mysqli_query($con, $checkQuery);

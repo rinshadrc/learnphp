@@ -71,7 +71,7 @@ div.content {
 <body>
 <div class="sidebar">
   <a class="active" href="index.php">Home</a>
-  <a href="index.php?insert_category">Add categories</a>
+  <a href="index.php?insert_category">Add categories</a> 
   <a href="index.php?insert_product">Add product</a>
   <a href="index.php?view_customers">View customers</a>
   <a href="index.php?view_product">View product</a>
@@ -82,6 +82,8 @@ div.content {
 <div class="content">
 
 <h2>ADMIN PANEL</h2>
+
+
 
 
 <?php

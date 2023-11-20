@@ -7,9 +7,9 @@ include('../includes/connect.php');
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">No.</th>
 
-      <th scope="col">Customer Name</th>
+      <th scope="col">Customer Name</th> 
       <th scope="col">Customer Email</th>
       
     </tr>
@@ -23,7 +23,7 @@ include('../includes/connect.php');
     while($row = mysqli_fetch_assoc($result)){
       
       echo "<tr>
-      <th scope='row'>$count</th>
+      <th scope='row'>$count</th> n
       <td>{$row['c_name']}</td>
       <td>{$row['c_email']}</td>
      

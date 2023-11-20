@@ -8,6 +8,8 @@
   <title>mystore</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!-- icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <style>
     .separator-list li {
     border-bottom: 1px solid #ccc; /* Add a horizontal line separator */
@@ -30,7 +32,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-success ">
     <div class="container-fluid">
-      <a class="navbar-brand text-white fw-bold ms-4" href="#">MY STORE</a>
+      <a class="navbar-brand text-white fw-bold ms-4" href="#"><i class="bi bi-cart4"></i>&nbsp;&nbsp; MY STORE</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -49,11 +51,11 @@
             <a class="nav-link text-white" href="cart.php">Cart</a>
           </li> 
           <li class="nav-item ms-5">
-            <a class="nav-link text-danger" href="logout.php">logout- <?php
+            <a class="nav-link text-white" href="logout.php"> <?php
               session_start();
               if (isset($_SESSION['user'])) {
-                  $name = $_SESSION['user'];
-                  echo "<span class='text-white'>($name)</span>";
+                  $name = $_SESSION['user']['name'];
+                  echo "<span class='text-white'>($name)</span>&nbsp;&nbsp;<i class='bi bi-box-arrow-right'></i>";
               }
               ?>
 

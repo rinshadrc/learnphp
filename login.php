@@ -15,11 +15,17 @@ if(isset($_POST['login'])){
     print_r($results);
     if ($results) {
         if (mysqli_num_rows($results) > 0) {
+
+          $row = mysqli_fetch_assoc($results);
      
 
 
 
-        $_SESSION['user'] =$c_email ;
+        // $_SESSION['user'] =$c_email ;
+        $_SESSION['user'] = array(
+          'name' => $row['c_name'],
+          'email' => $row['c_email'],
+      );
    
         echo"<script>
         alert('login successfully');
@@ -38,7 +44,14 @@ if(isset($_POST['login'])){
 }
 
 ?>
+<?php
 
+if (isset($_SESSION['message'])) {
+  echo '<div ><h2 class="text-center text-danger">' . $_SESSION['message'] . '</h2></div>';
+  // Clear the message after displaying it
+  unset($_SESSION['message']);
+}
+?>
 <div class="container">
 <div class="row"><h2 class="TEXT-CENTER">USER LOGIN</h2></div>
 
