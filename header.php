@@ -50,6 +50,9 @@
           <li class="nav-item">
             <a class="nav-link text-white" href="cart.php">Cart</a>
           </li> 
+           <li class="nav-item">
+            <a class="nav-link text-white" href="orders.php">Orders</a>
+          </li> 
           <li class="nav-item ms-5">
             <a class="nav-link text-white" href="logout.php"> <?php
               session_start();

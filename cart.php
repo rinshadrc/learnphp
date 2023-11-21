@@ -65,12 +65,18 @@ include('authenticate.php');
     
 </tr></tbody></table>";
 
-    ?>
+$_SESSION['tprice'] = $sub_total;
+
+
+
+?>
+    
   
 
     <div class='text-center'>
-      <a href='place_order.php' class='btn btn-success'>Place Order</a>
-    </div>
+      <a href='checkout.php' class='btn btn-success'>Check out Order</a>
+    </div>  
+    
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 

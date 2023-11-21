@@ -10,7 +10,7 @@ include('../includes/connect.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mystore Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>/* The side navigation menu */
 .sidebar {
   margin: 0;
@@ -75,6 +75,8 @@ div.content {
   <a href="index.php?insert_product">Add product</a>
   <a href="index.php?view_customers">View customers</a>
   <a href="index.php?view_product">View product</a>
+  <a href="index.php?view_orders">View Orders</a>
+
   
 </div>
 
@@ -100,6 +102,10 @@ if(isset($_GET['view_product'])){
 if(isset($_GET['view_customers'])){
   include('view_customers.php');
 }
+if(isset($_GET['view_orders'])){
+  include('view_order.php');
+}
+
 
 ?>
 

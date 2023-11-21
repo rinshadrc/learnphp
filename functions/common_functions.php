@@ -20,7 +20,7 @@ function getproduct()
               <img src='./admin_page/product_images/{$row['p_image']}' class='card-img-top' height=222px>
               <div class='card-body'>
                 <h5 class='card-title text-uppercase'>{$row['p_name']}</h5>
-                <p class='card-text text-danger'>{$row['p_price']}</p>
+                <p class='card-text text-danger'><i class='bi bi-currency-rupee'>{$row['p_price']}</i></p>
 
                 <p class='card-text fst-italic'>{$row['p_des']}</p>
                 <a href='add_to_cart.php?product_id={$row['p_id']}' class='btn btn-success'>Add to cart</a>
@@ -92,7 +92,7 @@ function searchproduct()
                 <img src='./admin_page/product_images/{$row['p_image']}' class='card-img-top' height=222px>
                 <div class='card-body'>
                   <h5 class='card-title text-uppercase'>{$row['p_name']}</h5>
-                  <p class='card-text text-danger'>{$row['p_price']}</p>
+                  <p class='card-text text-danger'><i class='bi bi-currency-rupee'>{$row['p_price']}</i></p>
       
                   <p class='card-text fst-italic'>{$row['p_des']}</p>
                   <a href='#' class='btn btn-success'>Add to cart</a>
