@@ -60,7 +60,7 @@ include('authenticate.php');
     echo "<tr>
     <td colspan='4'></td>
     <td class='fw-bold'>Total:</td>
-    <td class='fw-bold stotal'>$sub_total</td>
+    <td class='fw-bold stotal'><i class='bi bi-currency-rupee'></i>$sub_total</td>
     <td></td>
     
 </tr></tbody></table>";
@@ -74,7 +74,7 @@ $_SESSION['tprice'] = $sub_total;
   
 
     <div class='text-center'>
-      <a href='checkout.php' class='btn btn-success'>Check out Order</a>
+      <a href='checkout.php' class='btn btn-warning'>Check out Order</a>
     </div>  
     
 

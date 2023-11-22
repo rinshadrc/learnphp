@@ -5,7 +5,7 @@ include('header.php');
 
 
 ?>
-<table class="table  table-bordered m-2" >
+<table class="table  table-bordered m-5" >
   <thead class="table-dark">
   <tr>
       <th scope="row">Order N0.</th>
@@ -32,7 +32,7 @@ if(isset($_SESSION['user'])){
     $user_email = $_SESSION['user']['email'];
 
 }
-    $query  = "select * from orders where c_email = '$user_email'";
+    $query  = "select * from orders where c_email = '$user_email' ORDER BY order_date DESC";
     $result = mysqli_query($con,$query);
 
     if($result){
@@ -42,7 +42,7 @@ if(isset($_SESSION['user'])){
         while($order = mysqli_fetch_assoc($result)){
             $order_id=$order['order_id'];
             $total_price=$order['total_price'];
-            $order_date=$order['order_date'];
+            $order_date = date('d-m-Y', strtotime($order['order_date']));
 
             $itemquery = "select * from order_item oi inner join products p on oi.p_id=p.p_id where order_id =$order_id";
             $itemresult = mysqli_query($con,$itemquery);

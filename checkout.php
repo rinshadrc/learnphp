@@ -1,6 +1,9 @@
 <?php
 include('includes/connect.php');
 include('header.php');
+?>
+
+<?php
 
 
 
@@ -71,11 +74,22 @@ if(isset($_SESSION['tprice'])){
 
             // ... additional code ...
 
-            echo "<script>alert('Order placed successfully');</script>";
-            header("Location: index.php");
+
+            echo "<script>
+            alert('Order Placed Successfully');
+            window.location.href = 'index.php';
+            </script>";
             exit();
 
+           
+        
+            
         } else {
+            echo "Error placing the order: " . mysqli_error($con);
+        }
+
+        } 
+        else {
             echo "Error placing the order: " . mysqli_error($con);
         }
 
@@ -85,33 +99,46 @@ if(isset($_SESSION['tprice'])){
     header("Location: cart.php");
     exit();
 }
-}
+
 
 
 
 ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6 mt-5">
 
                 <form class="row g-3" method="POST">
+
+                <?php
+                        
+            if(isset($_SESSION['user'])){
+
+
+                $user_email = $_SESSION['user']['email'];
+
+                $query = "select address,pincode from orders where c_email = '$user_email'";
+                $result = mysqli_query($con,$query);
+                $data = mysqli_fetch_array($result);
+            }
+                
+                ?>
                    
                     <div class="col-md-10">
                         <label for="inputAddress" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="Enter your address" name="address">
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Enter your address" name="address" value="<?php echo $data['address'] ?>">
                     </div>
                     
                     <div class="col-md-10">
                         <label for="inputZip" class="form-label">Pin code</label>
-                        <input type="text" class="form-control" id="inputZip" name="pincode">
+                        <input type="text" class="form-control" id="inputZip" name="pincode" value="<?php echo $data['pincode'] ?>">
                     </div>
                    
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary" name="place_order">Place Order </button>
+                    <div class="col-12 text-center mt-5">
+                        <button type="submit" class="btn btn-success" name="place_order" id="placeOrderBtn">Place Order </button>
                     </div>
                     </form>
         </div>
-        <div class="col-md-2"></div>
         <?php
         
         if(isset($_SESSION['tprice'])){
@@ -120,11 +147,16 @@ if(isset($_SESSION['tprice'])){
 
         echo"
 
-        <div class='col-md-2'>
-            <h1>Total Price :$tprice </h1>
+        <div class='col-md-4 mt-5 ms-5'>
+            <h1>Total Price :<i class='bi bi-currency-rupee'>$tprice</i> </h1>
         </div>
         ";
         ?>
 
     </div>
 </div>
+<!-- Modal -->
+
+
+
+

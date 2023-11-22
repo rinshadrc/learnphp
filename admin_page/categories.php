@@ -28,6 +28,7 @@ if(isset($_POST['add_cat'])){
 
 
 ?>
+<h1>ADD CATEGORIES</h1>
 
 <form action="" method="POST">
 

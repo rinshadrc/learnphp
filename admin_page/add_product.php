@@ -31,6 +31,7 @@ if(isset($_POST['add_product'])){
 
 
 ?>
+<h1>ADD PRODUCTS</h1>
 
 <form method="POST" enctype="multipart/form-data">
 

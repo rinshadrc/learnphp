@@ -3,6 +3,7 @@ include('../includes/connect.php');
 
 
 ?>
+<h1>OUR CUSTOMERS</h1>
 
 <table class="table">
   <thead>

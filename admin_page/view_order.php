@@ -10,7 +10,9 @@ $ordersResult = mysqli_query($con, $ordersQuery);
 if ($ordersResult) {
     if (mysqli_num_rows($ordersResult) > 0) {
         // Display orders and their items in a table
-        echo "<table class='table' border='2'>
+        echo "
+        <h1>OUR ORDERS</h1>
+        <table class='table' border='2'>
         <thead class='thead-dark'>
             <tr>
                 <th>Order ID</th>
