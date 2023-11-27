@@ -75,7 +75,8 @@ $_SESSION['tprice'] = $sub_total;
 
     <div class='text-center'>
       <a href='checkout.php' class='btn btn-warning'>Check out Order</a>
-    </div>  
+    </div> 
+    <a href="checkout.php">sgerg</a> 
     
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

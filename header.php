@@ -10,6 +10,13 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <!-- icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <!-- url icon -->
+  <link rel="icon" href="urlicon\url.ico" type="image/x-icon">
+  <!-- <link rel="shortcut icon" href="urlicon\url.ico" type="image/x-icon"> -->
+
+
+
   <style>
     .separator-list li {
     border-bottom: 1px solid #ccc; /* Add a horizontal line separator */
@@ -42,9 +49,7 @@
           <li class="nav-item">
             <a class="nav-link active  text-white" aria-current="page" href="index.php">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="registration.php">Register</a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link text-white" href="login.php">Login</a>
           </li>

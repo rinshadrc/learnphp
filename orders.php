@@ -1,93 +1,104 @@
 <?php
 include('includes/connect.php');
 include('header.php');
+include('authenticate.php');
+
 
 
 
 ?>
-<table class="table  table-bordered m-5" >
-  <thead class="table-dark">
-  <tr>
-      <th scope="row">Order N0.</th>
-      <th>Order Date</th>
+<div class="container">
+  <div class="row">
+            <div class="col-md-12">
+        <table class="table  table-bordered m-2" >
+          <thead class="table-dark">
+          <tr>
+              <th scope="row">Order N0.</th>
+              <th>Product</th>
 
-      <th>Product Name</th>
-      <th>Product Price</th>
-      <th>Quantity</th>
-      <th>Total Price</th>
+              <th>Order Date</th>
 
-
-
-    </tr>
-    
-  </thead>
-  <tbody>
-   
-   
-  
-<?php
+              <th>Product Name</th>
+              <th>Product Price</th>
+              <th>Quantity</th>
+              <th>Total Price</th>
 
 
-if(isset($_SESSION['user'])){
-    $user_email = $_SESSION['user']['email'];
 
-}
-    $query  = "select * from orders where c_email = '$user_email' ORDER BY order_date DESC";
-    $result = mysqli_query($con,$query);
-
-    if($result){
-
-        $count = 1;
-
-        while($order = mysqli_fetch_assoc($result)){
-            $order_id=$order['order_id'];
-            $total_price=$order['total_price'];
-            $order_date = date('d-m-Y', strtotime($order['order_date']));
-
-            $itemquery = "select * from order_item oi inner join products p on oi.p_id=p.p_id where order_id =$order_id";
-            $itemresult = mysqli_query($con,$itemquery);
-
-            if($itemresult){
+            </tr>
+            
+          </thead>
+          <tbody>
+          
+          
+          
+        <?php
 
 
-                echo"<tr>
-                <th scope='row' class='text-success'>$count</th></tr>
-                ";
+        if(isset($_SESSION['user'])){
+            $user_email = $_SESSION['user']['email'];
 
-                while($row= mysqli_fetch_assoc($itemresult)){
-                    echo" <tr>
-                    <td></td>
+        }
+            $query  = "select * from orders where c_email = '$user_email' ORDER BY order_date DESC";
+            $result = mysqli_query($con,$query);
 
+            if($result){
+
+                $count = 1;
+
+                while($order = mysqli_fetch_assoc($result)){
+                    $order_id=$order['order_id'];
+                    $total_price=$order['total_price'];
+                    $order_date = date('d-m-Y', strtotime($order['order_date']));
+
+                    $itemquery = "select * from order_item oi inner join products p on oi.p_id=p.p_id where order_id =$order_id";
+                    $itemresult = mysqli_query($con,$itemquery);
+
+                    if($itemresult){
+
+
+                        echo"<tr>
+                        <th scope='row' class='text-success'>$count</th></tr>
+                        ";
+
+                        while($row= mysqli_fetch_assoc($itemresult)){
+                            echo" <tr>
+                            <td></td>
+
+                            
+                            <td><img src='admin_page/product_images/{$row['p_image']}' class='card-img-top' height=100px width=70px></td>
+                            <td>$order_date</td>
+
+                            <td>{$row['p_name']}</td>
+                            <td>{$row['p_price']}</td>
+                            <td>{$row['quantity']} nos</td>
+                            <td><i class='bi bi-currency-rupee'></i>{$row['tprice_orderitem']}</td>
+                            
+
+
+                          </tr>";
+                        }
+                        echo "<tr>
+                        <td colspan='4'></td>
+                        <td class='fw-bold text-success'>Purchased Amount:</td>
+                        <td class='fw-bold text-success'><i class='bi bi-currency-rupee'>$total_price</i></td>
+                        
+                      
+                        
+                    </tr>";
+                    }
+
+                    $count++;
                     
-                    <td>$order_date</td>
-
-                    <td>{$row['p_name']}</td>
-                    <td>{$row['p_price']}</td>
-                    <td>{$row['quantity']} nos</td>
-                    <td><i class='bi bi-currency-rupee'></i>{$row['tprice_orderitem']}</td>
-                    
-
-
-                  </tr>";
                 }
-                echo "<tr>
-                <td colspan='4'></td>
-                <td class='fw-bold text-success'>Purchased Amount:</td>
-                <td class='fw-bold text-success'><i class='bi bi-currency-rupee'>$total_price</i></td>
-                
-               
-                
-            </tr>";
+              
             }
 
-            $count++;
-            
-        }
-       
-    }
-
-?>
-</tbody>
-</table>
+        ?>
+        </tbody>
+        </table>
+        </div>
+  </div>
+</div>
 
 

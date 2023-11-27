@@ -23,7 +23,7 @@ function getproduct()
                 <p class='card-text text-danger'><i class='bi bi-currency-rupee'>{$row['p_price']}</i></p>
 
                 <p class='card-text fst-italic'>{$row['p_des']}</p>
-                <a href='add_to_cart.php?product_id={$row['p_id']}' class='btn btn-success'>Add to cart</a>
+                <a href='add_to_cart.php?product_id={$row['p_id']}' class='btn btn-dark'>Add to cart</a>
               </div>
             </div>
         </div>";

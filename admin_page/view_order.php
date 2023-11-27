@@ -53,7 +53,7 @@ while ($order = mysqli_fetch_assoc($ordersResult)) {
         echo "</ul></td><td><ul style='list-style-type: none;'>";
 
         // Reset the pointer to the beginning of the result set
-        mysqli_data_seek($orderItemsResult, 0);
+        mysqli_data_seek($orderItemsResult,0);
 
         while ($item = mysqli_fetch_assoc($orderItemsResult)) {
             echo "<li><i class='bi bi-currency-rupee'></i>{$item['p_price']} X {$item['quantity']} = <i class='bi bi-currency-rupee'></i>{$item['tprice_orderitem']}</li>";
@@ -64,7 +64,7 @@ while ($order = mysqli_fetch_assoc($ordersResult)) {
         echo "Error fetching order items: " . mysqli_error($con);
     }
 
-    echo "<td class='fw-bold'><i class='bi bi-currency-rupee'>{$order['total_price']}</i></td>
+    echo "<td class='fw-bold text-success'><i class='bi bi-currency-rupee'>{$order['total_price']}</i></td>
           </tr>";
 
 

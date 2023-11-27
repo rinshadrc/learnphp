@@ -46,6 +46,8 @@ if(isset($_POST['login'])){
 ?>
 <?php
 
+// this is for showin login to open cart and orders
+
 if (isset($_SESSION['message'])) {
   echo '<div ><h2 class="text-center text-danger">' . $_SESSION['message'] . '</h2></div>';
   // Clear the message after displaying it
@@ -76,11 +78,17 @@ if (isset($_SESSION['message'])) {
   
   <button type="submit" class="btn btn-success" name="login" >Login</button>
 </form>
+<br><br>
+
+<h6>if you don't have an account ?<a href="registration.php">Register here.</a></h6>
+
 
 </div>
 
 
+
 <div class="col-md-2"></div>
+
 
 </div>
 </div>
